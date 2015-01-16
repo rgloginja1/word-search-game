@@ -12,17 +12,35 @@
 
     <link rel="stylesheet" href="css/wordseach.css" />
     <link rel="stylesheet" href="css/style.css" />
+
   </head>
   <body>
 	<br/>
 	<div class="container">
 		<div class="well">
 			<div class="wrap">
-				<h1 class="logo">Word Hunter</h1>
+				
+				<table class="table">
+					<col width="33%">
+					<col width="33%">
+					<col width="33%">
+					<h1 class="logo">Word Hunter</h1>
+					<tr>
+						<td><button class="btn btn-primary btn-block btn-sm">Random Game</button></td>
+						<td><button class="btn btn-warning btn-block btn-sm">Fastest Games</button></td>
+						<td><button class="btn btn-success btn-block btn-sm">About</button></td>
+
+					</tr>
+				</table>
+				
 				<select id= "mySelect" class="form-control" width="100"></select><br />
 				<section id="ws-area"></section>
 			</div>
-	  	</div>
+			<div class="row">
+				<div class="col-lg-6 col-lg-offset-3 text-center"><small>Word Hunter is originally based on <a href="https://github.com/lizhineng/word-search-game">word-search-game</a> by lizhineng.</small></div>
+			</div>
+			
+		</div>
 	</div>
     <script src="js/utility.js"></script>
     <script src="js/wordsearch.js"></script>
