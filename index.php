@@ -44,7 +44,7 @@
 				<section id="ws-area"></section>
 			</div>
 			<div class="row">
-				<div class="col-lg-6 col-lg-offset-3 text-center"><small>Word Hunter is originally based on <a href="https://github.com/lizhineng/word-search-game">word-search-game</a> by <a href="https://github.com/lizhineng">lizhineng</a>.</small></div>
+				<div class="col-lg-6 col-lg-offset-3 text-center"><small><?php echo $app_name; ?> is originally based on <a href="https://github.com/lizhineng/word-search-game">word-search-game</a> by <a href="https://github.com/lizhineng">lizhineng</a>.</small></div>
 			</div>
 			
 		</div>
@@ -79,7 +79,7 @@
 					<h4 class="modal-title">About</h4>
 				</div>
 				<div class="modal-body">
-					<p>Word Hunter is a simple "find-the-words" game that was originally forked from <a href="https://github.com/lizhineng/word-search-game">word-search-game</a> by <a href="https://github.com/lizhineng">lizhineng</a>.</p>
+					<p><?php echo $app_name; ?> is a simple "find-the-words" game that was originally forked from <a href="https://github.com/lizhineng/word-search-game">word-search-game</a> by <a href="https://github.com/lizhineng">lizhineng</a>.</p>
 					<p>The current game is still under development and we would love to see people help contribute to making this otherwise boring game into an enjoyable and fun game for the whole family.</p>
 					<br/>
 					<p>Forked by <a href="https://github.com/rgloginja1">rgloginja1</a> from RMG Software Pty Ltd on Saturday 17th January 2015.</p>
@@ -100,9 +100,9 @@
 					<h4 class="modal-title">New Game</h4>
 				</div>
 				<div class="modal-body">
-					<p>Are you ready to see if you will make it to the Word Hunter leaderboard?</p>
+					<p>Are you ready to see if you will make it to the <?php echo $app_name; ?> Leaderboard?</p>
 					<p>Hold your mouse over each button for a brief description of your goal for each game and click that button to start your game.</p>
-					<small>NB. Word Hunter not working on your mobile? This game was originally designed for use with browsers on PC's and laptops. We will be making an effort to make this work on all devices, including mobile devices, in the near future.</small>
+					<small>NB. <?php echo $app_name; ?> not working on your mobile? This game was originally designed for use with browsers on PC's and laptops. We will be making an effort to make this work on all devices, including mobile devices, in the near future.</small>
 					<table class="table">
 						<col width="33%">
 						<col width="33%">
@@ -126,7 +126,7 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
-					<h4 class="modal-title">Fastest Games</h4>
+					<h4 class="modal-title">Leaderboard</h4>
 				</div>
 				<div class="modal-body">
 					<table class="table">
