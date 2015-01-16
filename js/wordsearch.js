@@ -21,9 +21,9 @@
 
     // Default settings
     var default_settings = {
-      'directions': ['W', 'N', 'WN', 'EN'],
+      'directions': ['W', 'N', 'WN'],
       'gridSize': 10,
-      'words': ['one', 'two', 'three', 'four', 'five'],
+      'words': ['shark', 'tiger', 'lion', 'hippo', 'monkey'],
       'debug': false
     }
     this.settings = Object.merge(settings, default_settings);
@@ -285,7 +285,6 @@
         items.push(this.getItem(row, col));
       } while( row !== rowTo || col !== colTo );
     }
-
     return items;
   }
 
@@ -327,8 +326,11 @@
         var row = selected[i].row + 1,
           col = selected[i].col + 1,
           el = document.querySelector('.ws-area .ws-row:nth-child(' + row + ') .ws-col:nth-child(' + col + ')');
-
         el.classList.add('ws-found');
+        /*
+        var ele = document.getElementById("myelement");
+		ele.style.setProperty("text-decoration", "line-through");
+        */
       }
     }
   }
@@ -353,7 +355,7 @@
     return function() {
       if (_this.selectFrom) {
         _this.selected = _this.getItems(_this.selectFrom.row, _this.selectFrom.col, item.row, item.col);
-
+				
         _this.clearHighlight();
 
         for (var i = 0; i < _this.selected.length; i ++) {
