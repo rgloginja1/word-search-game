@@ -1,0 +1,11 @@
+index.html will become index.php as we start accessing data for game play, Leaderboard and many other
+things we will be adding over the coming hours/days/weeks etc
+
+Work on choosing "standard" game play needs to start immediately - games/words will be stored in a mysql 
+database (to be designed) and each game or set of words will be picked randomly.
+
+A random game is actually built and submitted by a user. They assign upto 10 words for each puzzle and will
+try to follow a theme (eg. Animals, Clothing etc).
+
+The timed game will be the last game to be developed - and probably the hardest - and will link in to the
+Leaderboard which will also be stored as MySQL data.
