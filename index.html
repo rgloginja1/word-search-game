@@ -13,9 +13,9 @@
       <!-- <ul class="ws-words"></ul> -->
     </div>
     <div class="wrap">
-		  <select id= "gameWords"></select>
+	<select id= "gameWords"></select>
     </div>
-    <!--- <a href="https://github.com/lizhineng/word-search-game"><img style="position: absolute; top: 0; right: 0; border: 0;" src="images/forkme_right_red.png" alt="Fork me on GitHub"></a> --->
+
     <script src="js/utility.js"></script>
     <script src="js/wordsearch.js"></script>
     <script type="text/javascript">
@@ -26,18 +26,11 @@
       var words = gameobj.settings.words,
         wordsWrap = document.querySelector('.ws-words');
       for (i in words) {
-        /*
-        var liEl = document.createElement('li');
-        liEl.setAttribute('class', 'ws-word');
-        liEl.innerText = words[i];
-        wordsWrap.appendChild(liEl);
-		*/
-		
-		var x = document.getElementById("gameWords");
-		var option = document.createElement("option");
-		option.setAttribute('id', words[i]);
-		option.text = words[i];
-		x.add(option);
+       	var x = document.getElementById("gameWords");
+	var option = document.createElement("option");
+	option.setAttribute('id', words[i]);
+	option.text = words[i];
+	x.add(option);
       }
     </script>
   </body>
