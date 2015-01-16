@@ -1,11 +1,16 @@
-# Word search game
-A word game which programming with HTML5 and Javascript.
+# Word Hunter aka word-search-game
+A word game where you need to find the hidden words.
 
-##Requirment
-* Internet Explorer 10
-* Google Chrome 8
-* Opera 11.5
-* Safari 5
+This project was originally forked from the author listed in the Copyright notice below. We have since made significant design and game play changes to the original source code.
+
+RMG Software Pty Ltd, the Company that will maintain this fork, will continue to develop this project and looks forward to seeing new features added, collaborating with other contributors and ultimately building a game that will waste the time of users around the world.
+
+To see what features we plan on adding, please check out the TODO file.
+
+##Requirments
+* Almost any modern web browser
+* A suitable server and/or hosting environment to host the files
+
 
 ## License
 The MIT License (MIT)
