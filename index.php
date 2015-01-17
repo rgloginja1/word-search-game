@@ -1,8 +1,7 @@
 <?php
-	
-	include('config.php');
-
+	include("config.php");
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -35,41 +34,73 @@
 						<td><a href="#" class="btn btn-primary btn-block btn-sm" data-toggle="modal" data-target="#newgame">New Game</a></td>
 						<td><a href="#" class="btn btn-warning btn-block btn-sm" data-toggle="modal" data-target="#fastestgame">Leaderboard</a></td>
 						<td><a href="#" class="btn btn-success btn-block btn-sm" data-toggle="modal" data-target="#about">About Game</a></td>
-						
-
 					</tr>
 				</table>
 				
-				<select id= "mySelect" class="form-control" width="100"></select><br />
+				<select id= "mySelect" class="form-control" width="100"></select>
+				<br />
 				<section id="ws-area"></section>
 			</div>
 			<div class="row">
-				<div class="col-lg-6 col-lg-offset-3 text-center"><small><?php echo $app_name; ?> is originally based on <a href="https://github.com/lizhineng/word-search-game">word-search-game</a> by <a href="https://github.com/lizhineng">lizhineng</a>.</small></div>
+				<div class="col-lg-6 col-lg-offset-3 text-center"><small><?php echo $app_name; ?> is based on <a href="https://github.com/lizhineng/word-search-game">word-search-game</a> by <a href="https://github.com/lizhineng">lizhineng</a>.</small></div>
 			</div>
 			
 		</div>
 	</div>
-   
-	
-
-
+    
     <script src="js/utility.js"></script>
     <script src="js/wordsearch.js"></script>
+    <script src="js/extrafuncs.js"></script>
+  
     <script type="text/javascript">
-      var gameAreaEl = document.getElementById('ws-area');
-      var gameobj = gameAreaEl.wordSeach();
+      function startPuzzle(clear) {
+		  // This will clear anything that is in mySelect
+		  // to prevent duplications on New Game
+		  removeOptions(document.getElementById("mySelect"));
+		  
+		  if(clear == 1){
+			try {
+				ClearOldPuzzle();
+				console.log('ClearOldPuzzle = 1');
+			} catch(err) {
+				console.log('ClearOldPuzzle() was not fired - Probably because the user wants another game? Error?');
+			} 
+		  } else if (clear == 2) {
+			try {
+				ClearOldPuzzle();
+				console.log('ClearOldPuzzle = 2');
+			} catch(err) {
+				console.log('ClearOldPuzzle() was not fired - Probably because the user wants another game? Error?');
+			} 	
+		  } else if (clear == 3) {
+			 try {
+				ClearOldPuzzle();
+				console.log('ClearOldPuzzle = 3');
+			} catch(err) {
+				console.log('ClearOldPuzzle() was not fired - Probably because the user wants another game? Error?');
+			} 	 
+		  } else {
+			  console.log('ClearOldPuzzle() was not fired - Did the user just load the page?');
+		  }
+		  
+		  var gameAreaEl = document.getElementById('ws-area');
+		  var gameobj = gameAreaEl.wordSeach();
 
-      // Put words into `.ws-words`
-      var words = gameobj.settings.words,
-        wordsWrap = document.querySelector('.ws-words');
-      for (i in words) {
-		var x = document.getElementById("mySelect");
-		var option = document.createElement("option");
-		option.setAttribute('id', words[i]);
-		option.text = words[i];
-		x.add(option);
-      }
+		  // Put words into `.ws-words`
+		  var words = gameobj.settings.words, wordsWrap = document.querySelector('.ws-words');
+		  for (i in words) {
+			var x = document.getElementById("mySelect");
+			var option = document.createElement("option");
+			option.setAttribute('id', words[i]);
+			option.text = words[i];
+			x.add(option);
+		  }
+	  }
+	  
+	  startPuzzle(0);
+	  
     </script>
+    
     
     <div class="modal" id="about">
 		<div class="modal-dialog">
@@ -82,7 +113,7 @@
 					<p><?php echo $app_name; ?> is a simple "find-the-words" game that was originally forked from <a href="https://github.com/lizhineng/word-search-game">word-search-game</a> by <a href="https://github.com/lizhineng">lizhineng</a>.</p>
 					<p>The current game is still under development and we would love to see people help contribute to making this otherwise boring game into an enjoyable and fun game for the whole family.</p>
 					<br/>
-					<p>Forked by <a href="https://github.com/rgloginja1">rgloginja1</a> from RMG Software Pty Ltd on Saturday 17th January 2015.</p>
+					<p>Forked by <a href="https://github.com/rgloginja1">rgloginja1</a> of RMG Software Pty Ltd on Saturday 17th January 2015.</p>
 					<p>For more information, please visit our <a href="https://github.com/rgloginja1/word-search-game">GitHub repo</a>.</p>
 				</div>
 				<div class="modal-footer">
@@ -108,9 +139,9 @@
 						<col width="33%">
 						<col width="33%">
 						<tr>
-							<td><button class="btn btn-primary btn-block btn-sm" title="A standard game that will not be timed and will not go towards the Leaderboard. Take your time.">Standard Game</button></td>
-							<td><button class="btn btn-warning btn-block btn-sm" title="Get ready to play a completely random game - becareful! There could be offensive games in here.">Random Game</button></td>
-							<td><button class="btn btn-success btn-block btn-sm" title="You want the number one position? Go ahead! This is the only way to get in to it.">Timed Game</button></td>							
+							<td><button data-dismiss="modal" class="btn btn-primary btn-block btn-sm" onclick="startPuzzle(1);" title="A standard game that will not be timed and will not go towards the Leaderboard. Take your time.">Standard Game</button></td>
+							<td><button data-dismiss="modal" class="btn btn-warning btn-block btn-sm" onclick="startPuzzle(2);" title="Get ready to play a completely random game - becareful! There could be offensive games in here.">Random Game</button></td>
+							<td><button data-dismiss="modal" class="btn btn-success btn-block btn-sm" onclick="startPuzzle(3);" title="You want the number one position? Go ahead! This is the only way to get in to it.">Timed Game</button></td>							
 						</tr>
 					</table>
 				</div>
@@ -129,6 +160,7 @@
 					<h4 class="modal-title">Leaderboard</h4>
 				</div>
 				<div class="modal-body">
+					<p>Are you in the Leaderboard? Find all your words in record time and your name will be here.</p>
 					<table class="table">
 						<thead>
 							<tr>
