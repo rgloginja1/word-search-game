@@ -7,8 +7,9 @@
   <head>
     <meta charset="utf-8">
     <title><?php echo $app_name; ?></title>
-   
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
+
 
    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.1/cosmo/bootstrap.min.css">
@@ -40,67 +41,23 @@
 				<select id= "mySelect" class="form-control" width="100"></select>
 				<br />
 				<section id="ws-area"></section>
+				<div id="clockCounter" hidden></div>
 			</div>
 			<div class="row">
 				<div class="col-lg-6 col-lg-offset-3 text-center"><small><?php echo $app_name; ?> is based on <a href="https://github.com/lizhineng/word-search-game">word-search-game</a> by <a href="https://github.com/lizhineng">lizhineng</a>.</small></div>
 			</div>
-			
+			<p hidden id="gameTypeElem">1</p>
+			<p hidden id="itemsFound1" name="itemsFound1">0</p>
 		</div>
 	</div>
     
     <script src="js/utility.js"></script>
     <script src="js/wordsearch.js"></script>
     <script src="js/extrafuncs.js"></script>
-  
-    <script type="text/javascript">
-      function startPuzzle(clear) {
-		  // This will clear anything that is in mySelect
-		  // to prevent duplications on New Game
-		  removeOptions(document.getElementById("mySelect"));
-		  
-		  if(clear == 1){
-			try {
-				ClearOldPuzzle();
-				console.log('ClearOldPuzzle = 1');
-			} catch(err) {
-				console.log('ClearOldPuzzle() was not fired - Probably because the user wants another game? Error?');
-			} 
-		  } else if (clear == 2) {
-			try {
-				ClearOldPuzzle();
-				console.log('ClearOldPuzzle = 2');
-			} catch(err) {
-				console.log('ClearOldPuzzle() was not fired - Probably because the user wants another game? Error?');
-			} 	
-		  } else if (clear == 3) {
-			 try {
-				ClearOldPuzzle();
-				console.log('ClearOldPuzzle = 3');
-			} catch(err) {
-				console.log('ClearOldPuzzle() was not fired - Probably because the user wants another game? Error?');
-			} 	 
-		  } else {
-			  console.log('ClearOldPuzzle() was not fired - Did the user just load the page?');
-		  }
-		  
-		  var gameAreaEl = document.getElementById('ws-area');
-		  var gameobj = gameAreaEl.wordSeach();
 
-		  // Put words into `.ws-words`
-		  var words = gameobj.settings.words, wordsWrap = document.querySelector('.ws-words');
-		  for (i in words) {
-			var x = document.getElementById("mySelect");
-			var option = document.createElement("option");
-			option.setAttribute('id', words[i]);
-			option.text = words[i];
-			x.add(option);
-		  }
-	  }
-	  
-	  startPuzzle(0);
-	  
+    <script type="text/javascript">	  
+	  startPuzzle(1);
     </script>
-    
     
     <div class="modal" id="about">
 		<div class="modal-dialog">
@@ -139,13 +96,33 @@
 						<col width="33%">
 						<col width="33%">
 						<tr>
-							<td><button data-dismiss="modal" class="btn btn-primary btn-block btn-sm" onclick="startPuzzle(1);" title="A standard game that will not be timed and will not go towards the Leaderboard. Take your time.">Standard Game</button></td>
-							<td><button data-dismiss="modal" class="btn btn-warning btn-block btn-sm" onclick="startPuzzle(2);" title="Get ready to play a completely random game - becareful! There could be offensive games in here.">Random Game</button></td>
-							<td><button data-dismiss="modal" class="btn btn-success btn-block btn-sm" onclick="startPuzzle(3);" title="You want the number one position? Go ahead! This is the only way to get in to it.">Timed Game</button></td>							
+							<td><button data-dismiss="modal" class="btn btn-primary btn-block btn-sm" onclick="startPuzzle(1);" title="Play a game with words from one random category.">Standard Game</button></td>
+							<td><button data-dismiss="modal" class="btn btn-warning btn-block btn-sm" onclick="startPuzzle(2);" title="Play a game with random words from random categories.">Random Game</button></td>
+							<td><button data-dismiss="modal" data-toggle="modal" data-target="#timedgame" class="btn btn-success btn-block btn-sm" title="Play a game with random words from random categories and get your name on the Leaderboard.">Timed Game</button></td>							
 						</tr>
 					</table>
 				</div>
 				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	 <div class="modal" id="timedgame">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+					<h4 class="modal-title">Timed Game</h4>
+				</div>
+				<div class="modal-body">
+					<p>Timed Games for <?php echo $app_name; ?> are still being developed.</p>
+					<p>Please be patient as we iron out all the kinks in <?php echo $app_name; ?>.</p>
+					<p></p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-success" onclick="newClock();" data-dismiss="modal">Start</button>
 					<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
 				</div>
 			</div>
