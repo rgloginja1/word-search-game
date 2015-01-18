@@ -13,21 +13,40 @@
    * @param {Array} settings
    * constructor
    */
-  function WordSeach(wrapEl, settings) {
+  function WordSeach(wrapEl, settings) {	
+	var myWordArray = new Array();
+	var result = null;
+	var gameTypeElRes = document.getElementById("gameTypeElem").innerHTML;
+	
+    $.ajax({
+		url: 'wordharvest.php',
+        type: 'get',
+        dataType: 'json',
+        data: { gameType: gameTypeElRes },
+        async: false,
+        cache: false,
+        success: function(data) {
+			result = data;
+			console.log('Data from Word Harvest has been received');
+         }
+	});
+	
     this.wrapEl = wrapEl;
-
+	
     // Add `.ws-area` to wrap element
     this.wrapEl.classList.add('ws-area');
 
     // Default settings
-    var default_settings = {
+    var default_settings = {	
       'directions': ['W', 'N', 'WN'],
-      'gridSize': 10,
-      'words': ['shark', 'tiger', 'lion', 'hippo', 'monkey'],
+      'gridSize': 15,
+      'words': [result['w1'],result['w2'],result['w3'],result['w4'],result['w5'],result['w6'],result['w7'],result['w8'],result['w9'],result['w10']],
       'debug': false
     }
+   
     this.settings = Object.merge(settings, default_settings);
-
+	console.log("Settings have been merged");
+	
     // Check the words' length if it is overflow the grid
     if (this.parseWords(this.settings.gridSize)) {
       // Add words into the matrix data
@@ -64,9 +83,9 @@
 
       var word = this.settings.words[i];
       if (word.length > maxSize) {
-        alert('The length of word `' + word + '` is overflow the gridSize.');
-        console.error('The length of word `' + word + '` is overflow the gridSize.');
-        itWorked = false;
+        //alert('The length of word `' + word + '` creates an overflow with gridSize.');
+        console.error('The length of word `' + word + '` creates an overflow with gridSize.');
+        itWorked = false; 
       }
     }
 
@@ -171,9 +190,11 @@
      * Letter matrix
      *
      * param {Array}
-     */
+     */ 
+     
+    //gamesType = "countries";
     this.matrix = [];
-
+	
     /**
      * Selection from
      * @Param {Object}
@@ -312,9 +333,11 @@
    * Lookup if the wordlist contains the selected
    * @param {Array} selected
    */
+  var totalFound = 0;
+    
   WordSeach.prototype.lookup = function(selected) {
     var words = [''];
-
+	 
     for (var i = 0; i < selected.length; i++) {
       words[0] += selected[i].letter;
     }
@@ -323,15 +346,31 @@
     if (this.settings.words.indexOf(words[0]) > -1 ||
         this.settings.words.indexOf(words[1]) > -1) {
       for (var i = 0; i < selected.length; i++) {
-        var row = selected[i].row + 1,
+		  var row = selected[i].row + 1,
           col = selected[i].col + 1,
           el = document.querySelector('.ws-area .ws-row:nth-child(' + row + ') .ws-col:nth-child(' + col + ')');
-        el.classList.add('ws-found');
-        /*
-        var ele = document.getElementById("myelement");
-		ele.style.setProperty("text-decoration", "line-through");
-        */
+          el.classList.add('ws-found');
       }
+     
+      var foundName ="";
+      
+      for (var i = 0; i < selected.length; i++) {
+		foundName += selected[i].letter;
+	  }
+	  
+	  var ele = document.getElementById(foundName);
+	  ele.style.setProperty("color", "red");
+	  
+	  totalFound++;
+	  
+	  document.getElementById('itemsFound1').innerHTML = totalFound;
+	  
+	  
+	  if( totalFound == 10 ) {
+		  alert('You have found all the words!');
+		  console.log('We have reset the counter.');
+		  totalFound = 0;
+	  }
     }
   }
 
