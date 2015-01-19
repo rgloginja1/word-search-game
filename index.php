@@ -143,69 +143,14 @@
 							<tr>
 								<td>Place</td>
 								<td>Name</td>
-								<td>Game #</td>
+								<!-- <td>Game #</td> -->
 								<td>Time</td>
 							</tr>
 						</thead>
 						<tr>
 							<td>1st</td>
 							<td>Rob Gloginja</td>
-							<td>123456</td>
 							<td>10 seconds</td>
-						</tr>
-						<tr>
-							<td>2nd</td>
-							<td>Liss Hanley</td>
-							<td>123456</td>
-							<td>12 seconds</td>
-						</tr>
-						<tr>
-							<td>3rd</td>
-							<td>Joel Lidster</td>
-							<td>123456</td>
-							<td>14 seconds</td>
-						</tr>
-						<tr>
-							<td>4th</td>
-							<td>Steve O'Leary</td>
-							<td>123456</td>
-							<td>16 seconds</td>
-						</tr>
-						<tr>
-							<td>5th</td>
-							<td>Nara Edwards</td>
-							<td>123456</td>
-							<td>18 seconds</td>
-						</tr>
-						<tr>
-							<td>6th</td>
-							<td>Fred Smith</td>
-							<td>123456</td>
-							<td>20 seconds</td>
-						</tr>
-						<tr>
-							<td>7th</td>
-							<td>Tony Abbott</td>
-							<td>123456</td>
-							<td>22 seconds</td>
-						</tr>
-						<tr>
-							<td>8th</td>
-							<td>John Citizen</td>
-							<td>123456</td>
-							<td>24 seconds</td>
-						</tr>
-						<tr>
-							<td>9th</td>
-							<td>Christopher Poole</td>
-							<td>123456</td>
-							<td>26 seconds</td>
-						</tr>
-						<tr>
-							<td>10th</td>
-							<td>Kate Jones</td>
-							<td>123456</td>
-							<td>28 seconds</td>
 						</tr>
 					</table>
 				</div>
@@ -217,4 +162,17 @@
 	</div>
 	
   </body>
+  
+  <!-- PLEASE DO NOT REMOVE OUR ANALYTIC CODE -->
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46740768-4', 'auto');
+  ga('send', 'pageview');
+
+  </script>
+
 </html>
